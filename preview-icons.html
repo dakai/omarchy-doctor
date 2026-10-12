@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Omarchy Doctor — icon variants</title>
+<style>
+  body { margin: 0; font-family: monospace; background: #101315; color: #cacccc; }
+  .wrap { max-width: 760px; margin: 40px auto; padding: 0 20px 60px; }
+  h1 { font-size: 18px; font-weight: normal; }
+  h2 { font-size: 15px; font-weight: normal; margin: 36px 0 6px; }
+  p { font-size: 13px; opacity: .7; }
+  .bar { display: flex; gap: 26px; align-items: center; background: #000;
+         padding: 12px 20px; border-radius: 10px; border: 1px solid #2a2e33; }
+  .cell { display: flex; flex-direction: column; gap: 18px; align-items: center; }
+  .cell span { font-size: 12px; opacity: .6; }
+  .grid { display: flex; gap: 28px; margin-top: 28px; flex-wrap: wrap; }
+  .card { background: #161a1e; border: 1px solid #2a2e33; border-radius: 10px;
+          padding: 20px; text-align: center; }
+  .card span { display: block; margin-top: 12px; font-size: 12px; opacity: .6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Omarchy Doctor — icon variants</h1>
+  <p>Three sets, same geometry. Bar rows at real size (22px on black); cards at 64px. Left to right: ok, warn, bad, unknown. Warn and bad show a plain dot, no number.</p>
+
+  <h2>1 · Current — monochrome outline, state in the corner dot</h2>
+  <p>Glyph always bar-foreground; dot carries the state. This is what the QML draws now.</p>
+
+  <div class="bar">
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#cacccc" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#cacccc" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>ok</span>
+    </div>
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#cacccc" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#cacccc" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="84" cy="82" r="14" fill="#d4a017"/>
+      </svg>
+      <span>warn</span>
+    </div>
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#cacccc" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#cacccc" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="84" cy="82" r="14" fill="#e5484d"/>
+      </svg>
+      <span>bad</span>
+    </div>
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100" opacity="0.45">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#cacccc" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#cacccc" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>unknown</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#cacccc" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#cacccc" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>ok · 64px</span>
+    </div>
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#cacccc" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#cacccc" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="84" cy="82" r="14" fill="#d4a017"/>
+      </svg>
+      <span>warn · 64px</span>
+    </div>
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#cacccc" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#cacccc" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="84" cy="82" r="14" fill="#e5484d"/>
+      </svg>
+      <span>bad · 64px</span>
+    </div>
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100" opacity="0.45">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#cacccc" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#cacccc" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>unknown · 64px</span>
+    </div>
+  </div>
+
+  <h2>2 · A — solid badge, original-style, no frame</h2>
+  <p>Flat filled badge per state (green / amber / red / gray), solid cross, count pill on warn &amp; bad. No outer halo, no border — closest to the old icon.</p>
+
+  <div class="bar">
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100">
+        <rect x="10" y="10" width="80" height="80" rx="20" fill="#2fa84f"/>
+        <rect x="41" y="28" width="18" height="44" rx="4" fill="#ffffff"/>
+        <rect x="28" y="41" width="44" height="18" rx="4" fill="#ffffff"/>
+      </svg>
+      <span>ok</span>
+    </div>
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100">
+        <rect x="10" y="10" width="80" height="80" rx="20" fill="#d4a017"/>
+        <rect x="41" y="28" width="18" height="44" rx="4" fill="#191b20"/>
+        <rect x="28" y="41" width="44" height="18" rx="4" fill="#191b20"/>
+      </svg>
+      <span>warn</span>
+    </div>
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100">
+        <rect x="10" y="10" width="80" height="80" rx="20" fill="#e5484d"/>
+        <rect x="41" y="28" width="18" height="44" rx="4" fill="#ffffff"/>
+        <rect x="28" y="41" width="44" height="18" rx="4" fill="#ffffff"/>
+      </svg>
+      <span>bad</span>
+    </div>
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100">
+        <rect x="10" y="10" width="80" height="80" rx="20" fill="#7d8590"/>
+        <rect x="41" y="28" width="18" height="44" rx="4" fill="#ffffff"/>
+        <rect x="28" y="41" width="44" height="18" rx="4" fill="#ffffff"/>
+      </svg>
+      <span>unknown</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100">
+        <rect x="10" y="10" width="80" height="80" rx="20" fill="#2fa84f"/>
+        <rect x="41" y="28" width="18" height="44" rx="4" fill="#ffffff"/>
+        <rect x="28" y="41" width="44" height="18" rx="4" fill="#ffffff"/>
+      </svg>
+      <span>ok · 64px</span>
+    </div>
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100">
+        <rect x="10" y="10" width="80" height="80" rx="20" fill="#d4a017"/>
+        <rect x="41" y="28" width="18" height="44" rx="4" fill="#191b20"/>
+        <rect x="28" y="41" width="44" height="18" rx="4" fill="#191b20"/>
+      </svg>
+      <span>warn · 64px</span>
+    </div>
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100">
+        <rect x="10" y="10" width="80" height="80" rx="20" fill="#e5484d"/>
+        <rect x="41" y="28" width="18" height="44" rx="4" fill="#ffffff"/>
+        <rect x="28" y="41" width="44" height="18" rx="4" fill="#ffffff"/>
+      </svg>
+      <span>bad · 64px</span>
+    </div>
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100">
+        <rect x="10" y="10" width="80" height="80" rx="20" fill="#7d8590"/>
+        <rect x="41" y="28" width="18" height="44" rx="4" fill="#ffffff"/>
+        <rect x="28" y="41" width="44" height="18" rx="4" fill="#ffffff"/>
+      </svg>
+      <span>unknown · 64px</span>
+    </div>
+  </div>
+
+  <h2>3 · B — outline, state-colored cross</h2>
+  <p>White frame on every state (gray while unknown); only the cross takes the state color.</p>
+
+  <div class="bar">
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#ffffff" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#8fd694" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>ok</span>
+    </div>
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#ffffff" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#e8b572" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>warn</span>
+    </div>
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#ffffff" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#ef8a78" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>bad</span>
+    </div>
+    <div class="cell">
+      <svg width="22" height="22" viewBox="0 0 100 100" opacity="0.45">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#7d8590" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#7d8590" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>unknown</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#ffffff" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#8fd694" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>ok · 64px</span>
+    </div>
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#ffffff" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#e8b572" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>warn · 64px</span>
+    </div>
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#ffffff" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#ef8a78" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>bad · 64px</span>
+    </div>
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 100 100" opacity="0.45">
+        <path d="M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" fill="none" stroke="#7d8590" stroke-width="6"/>
+        <path d="M 50 34 V 66 M 34 50 H 66" fill="none" stroke="#7d8590" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <span>unknown · 64px</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
