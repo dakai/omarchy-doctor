@@ -141,7 +141,7 @@ Panel {
         id: button; anchors.fill: parent; bar: root.bar; text: ""
         active: root.verdict.count > 0
         tooltipText: "Omarchy Doctor · " + (root.rows.length ? root.headline : "not checked yet")
-        iconComponent: Component { MedicalCross { state: root.iconState; count: root.verdict.count; busy: root.scanning } }
+        iconComponent: Component { MedicalCross { state: root.iconState; count: root.verdict.count; busy: root.scanning; bar: root.bar } }
         onPressed: function(code) {
             if (code === Qt.MiddleButton) root.scan()
             else if (code === Qt.RightButton) { root.page = "about"; root.open() }

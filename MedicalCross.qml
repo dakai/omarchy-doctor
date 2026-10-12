@@ -1,60 +1,69 @@
 import QtQuick
+import QtQuick.Shapes
 import qs.Commons
 
-// Bar icon: a white medical cross on a solid badge whose color is the verdict
-// (green healthy, amber attention, red problem, gray not yet known), with the
-// number of current actionable faults in a pill on the corner.
+// Bar icon: a thin monochrome outline (rounded square + plus, drawn from SVG
+// path data) in the bar foreground, like every native Omarchy bar icon.
+// State lives in one plain corner dot (no count text — unreadable at bar
+// height): red/amber when something needs you, no dot when all good,
+// dimmed glyph when not checked yet.
 Item {
     id: root
     property string state: "unknown"
     property int count: 0
     property bool busy: false
-    readonly property color symbol: state==="warn"?"#191b20":"#ffffff"
-    readonly property color fill: state === "bad" ? "#e5484d" : state === "warn" ? "#d4a017" : state === "ok" ? "#2fa84f" : "#7d8590"
+    property var bar: null
+    property color ink: bar ? bar.barForeground : Color.foreground
+    readonly property color badFill: bar ? bar.urgent : "#e5484d"
+    readonly property color warnFill: "#d4a017"
+    readonly property real glyphBase: root.state === "unknown" ? 0.45 : 1.0
 
-    Rectangle{anchors.centerIn:parent;width:parent.width*1.16;height:width;radius:width*0.28;color:root.state==="ok"?Qt.alpha(root.fill,0.16):"transparent";border.width:1;border.color:root.state==="ok"?Qt.alpha(root.fill,0.25):"transparent"}
-    Rectangle {
-        id: badge
+    Item {
+        id: glyph
         anchors.centerIn: parent
-        width: Math.round(parent.width * 1.0); height: width
-        radius: width * 0.24
-        color: root.fill
-        border.width: 1
-        border.color: Qt.darker(root.fill, 1.35)
-        Rectangle {
-            anchors.centerIn: parent
-            width: Math.max(2, Math.round(parent.width * 0.22)); height: Math.round(parent.height * 0.64)
-            radius: width * 0.25; color: root.symbol
+        width: Math.min(parent.width, parent.height)
+        height: width
+        opacity: root.glyphBase
+
+        // 100-unit SVG box scaled to fit: visual size always equals glyph.
+        Item {
+            width: 100; height: 100
+            scale: glyph.width / 100
+            transformOrigin: Item.TopLeft
+            Shape {
+                width: 100; height: 100
+                antialiasing: true
+                layer.enabled: true
+                layer.samples: 4
+                ShapePath {
+                    fillColor: "transparent"
+                    strokeColor: root.ink
+                    strokeWidth: 6
+                    PathSvg { path: "M 32 10 H 68 A 22 22 0 0 1 90 32 V 68 A 22 22 0 0 1 68 90 H 32 A 22 22 0 0 1 10 68 V 32 A 22 22 0 0 1 32 10 Z" }
+                }
+                ShapePath {
+                    fillColor: "transparent"
+                    strokeColor: root.ink
+                    strokeWidth: 10
+                    capStyle: ShapePath.RoundCap
+                    PathSvg { path: "M 50 34 V 66 M 34 50 H 66" }
+                }
+            }
         }
-        Rectangle {
-            anchors.centerIn: parent
-            width: Math.round(parent.width * 0.64); height: Math.max(2, Math.round(parent.height * 0.22))
-            radius: height * 0.25; color: root.symbol
-        }
+
         SequentialAnimation on opacity {
             running: root.busy; loops: Animation.Infinite
-            NumberAnimation { to: 0.55; duration: 600; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 1; duration: 600; easing.type: Easing.InOutSine }
-            onRunningChanged: if (!running) badge.opacity = 1
+            NumberAnimation { to: 0.45; duration: 600; easing.type: Easing.InOutSine }
+            NumberAnimation { to: root.glyphBase; duration: 600; easing.type: Easing.InOutSine }
+            onRunningChanged: if (!running) glyph.opacity = root.glyphBase
         }
     }
 
     Rectangle {
         visible: root.count > 0
-        anchors.right: parent.right; anchors.top: parent.top
-        anchors.rightMargin: -Math.round(width * 0.7); anchors.topMargin: -Math.round(height * 0.45)
-        height: Math.max(11, Math.round(parent.height * 0.56)); width: Math.max(height, label.implicitWidth + 6)
-        radius: height / 2
-        color: "#ffffff"
-        border.width: 1; border.color: Qt.darker(root.fill, 1.2)
-        Text {
-            id: label
-            anchors.centerIn: parent
-            text: root.count > 99 ? "99+" : String(root.count)
-            color: Qt.darker(root.fill, 1.25)
-            font.family: Style.font.family
-            font.pixelSize: Math.max(8, Math.round(parent.height * 0.78))
-            font.bold: true
-        }
+        anchors.right: parent.right; anchors.bottom: parent.bottom
+        width: Math.max(7, Math.round(parent.width * 0.30)); height: width
+        radius: width / 2
+        color: root.state === "bad" ? root.badFill : root.warnFill
     }
 }
