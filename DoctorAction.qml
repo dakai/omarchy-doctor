@@ -1,11 +1,12 @@
 import QtQuick
 import QtQuick.Controls
 import qs.Commons
+import qs.Commons as Commons
 
 Button {
     id: root
-    property color ink: Color.popups.text
-    property color accent: Color.accent
+    property color ink: Commons.Color.popups.text
+    property color accent: Commons.Color.accent
     property bool selected: false
     property bool primary: false
     property bool fitCaption: false
