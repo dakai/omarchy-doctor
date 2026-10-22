@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import qs.Commons
+import qs.Commons as Commons
 import qs.Ui
 
 // Omarchy Doctor: one icon that answers "do I need to do anything?" and one
@@ -40,9 +41,9 @@ Panel {
     readonly property string headline: !rows.length ? (scanning ? "Checking your computer…" : "Let's check your computer")
         : verdict.count === 0 ? "All good" : verdict.count === 1 ? "1 thing needs you" : verdict.count + " things need you"
 
-    readonly property color ink: Color.popups.text
+    readonly property color ink: Commons.Color.popups.text
     readonly property color dim: Qt.alpha(ink, 0.62)
-    readonly property color surface: Color.popups.background
+    readonly property color surface: Commons.Color.popups.background
     readonly property color card: Qt.alpha(ink, 0.04)
     readonly property color edge: Qt.alpha(ink, 0.13)
     readonly property bool lightTheme: surface.r * 0.2126 + surface.g * 0.7152 + surface.b * 0.0722 > 0.55
